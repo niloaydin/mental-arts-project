@@ -5,14 +5,18 @@ import TodoItem from "./TodoItem"
 
 
 
-const TodoList = () => {
+const TodoList = ({ todos, setTodos }) => {
 
     return (
         <div className="todo_list_container">
             <Row>
                 <Col span={10} offset={1} className="active_todo_board">
-                    Todo Board
-                    <TodoItem />
+                    ACTIVE BOARD
+                    {todos.map(todo =>
+                        <TodoItem key={todo.id} todo={todo} />
+                    )}
+
+
                 </Col>
                 <Col span={10} offset={1} className="completed_todo_board"> Completed</Col>
 
