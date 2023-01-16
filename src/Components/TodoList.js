@@ -5,16 +5,24 @@ import TodoItem from "./TodoItem"
 
 
 
-const TodoList = ({ todos, setTodos }) => {
+const TodoList = ({ todos, setTodos, removeTodo, input, setInput }) => {
+
+    const updateTodo = (id, newValue) => {
+        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+            return
+        }
+
+        setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
+    }
 
     return (
         <div className="todo_list_container">
             <Row>
                 <Col span={10} offset={1} className="active_todo_board">
                     ACTIVE BOARD
-                    {todos.map(todo =>
-                        <TodoItem key={todo.id} todo={todo} />
-                    )}
+
+                    <TodoItem todos={todos} removeTodo={removeTodo} updateTodo={updateTodo} input={input} setInput={setInput} />
+
 
 
                 </Col>
