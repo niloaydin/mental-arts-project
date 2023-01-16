@@ -1,0 +1,13 @@
+.todo_list_container {
+    margin-top:50px;
+}
+ .active_todo_board {
+        background-color: green;
+        height: 500px;
+        font-size: 40px;
+    }
+ .completed_todo_board {
+        background-color: red;
+        height: 500px;
+        font-size: 40px;
+    }
