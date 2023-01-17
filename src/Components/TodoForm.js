@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input, Button, Form } from 'antd';
 import "./Css/TodoForm.css"
-import TodoList from "./TodoList"
 
-const TodoForm = ({ input, setInput, addTodos, submitUpdate }) => {
 
+const TodoForm = ({ input, setInput, addTodos, setTodos }) => {
 
     const [form] = Form.useForm();
 
@@ -14,12 +13,14 @@ const TodoForm = ({ input, setInput, addTodos, submitUpdate }) => {
     }
 
 
-    const handleSubmit = (param) => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-        return addTodos({
+        addTodos({
 
-            id: Math.floor(Math.random() * 10000), text: input, time: new Date()
+            id: Math.floor(Math.random() * 10000), text: input, time: Date.now()
         })
+
 
     }
     return (
