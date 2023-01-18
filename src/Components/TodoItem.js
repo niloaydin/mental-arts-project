@@ -26,7 +26,7 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
         const editedTodoList = [...todos].map((todo) => {
             if (!input || /^\s*$/.test(input)) return todo;
 
-            if (todo?.id === edit.id) {
+            if (todo.id === edit.id) {
                 return (todo = { ...todo, text: input });
             }
             return todo;
@@ -41,6 +41,7 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
     };
 
     const handleEdit = () => {
+
         updateTodo();
         setEdit({
             id: null,
@@ -50,7 +51,7 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
 
     };
     const triggerEdit = (todo) => {
-        console.log("AAA")
+        console.log("AAA", todo.id)
         setEdit({ id: todo.id })
         setIsEditing(true)
     }
@@ -60,7 +61,7 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
 
     return (
 
-        isEditing
+        isEditing && (todo.id === edit.id)
             ?
             <div key={todo?.id}
                 className="edit_modal" >
@@ -86,12 +87,12 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
             <Draggable draggableId={todo?.id.toString()} index={parseInt(index)}>
                 {
                     (provided) => (
-                        <div key={todo?.id} className="todo_item_container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                        <div key={todo.id} className="todo_item_container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
 
                             <Card className="todo_card">
                                 <div className="todo_item">
                                     <span>
-                                        {todo?.text}
+                                        {todo.text}
                                     </span>
 
                                     <div className="todo_icons">
