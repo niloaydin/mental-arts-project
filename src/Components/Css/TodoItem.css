@@ -1,0 +1,33 @@
+.todo_item_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo_card {
+  margin-top: 10px;
+  width: 90%;
+}
+
+.todo_item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.todo_item span {
+  font-size: 1.2em;
+}
+
+.todo_icons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit_form {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.deneme {
+  text-align: center;
+}

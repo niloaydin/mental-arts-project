@@ -1,13 +1,24 @@
 .todo_list_container {
-    margin-top:50px;
+  padding-top: 50px;
 }
- .active_todo_board {
-        background-color: green;
-        height: 500px;
-        font-size: 40px;
-    }
- .completed_todo_board {
-        background-color: red;
-        height: 500px;
-        font-size: 40px;
-    }
+.active_todo_board {
+  background: linear-gradient(
+    90deg,
+    rgba(210, 73, 35, 1) 32%,
+    rgba(255, 108, 0, 1) 89%
+  );
+  border: 2px solid #af3d1d;
+  border-radius: 8px;
+
+  min-height: 70vh;
+}
+.completed_todo_board {
+  background: linear-gradient(
+    90deg,
+    rgba(15, 227, 154, 1) 7%,
+    rgba(167, 255, 0, 1) 91%
+  );
+  border-radius: 8px;
+  min-height: 70vh;
+  border: 2px solid #38af1d;
+}

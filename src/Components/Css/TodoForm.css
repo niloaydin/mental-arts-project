@@ -1,4 +1,12 @@
 .todo_form_container {
-    margin-top:20px;
+  padding-top: 20px;
+}
 
+.input {
+  height: 42px;
+  width: 40%;
+}
+.button {
+  height: 42px;
+  width: 10%;
 }

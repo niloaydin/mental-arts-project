@@ -20,7 +20,7 @@ const TodoForm = ({ todos, setTodos }) => {
         addTodos({
             id: Math.floor(Math.random() * 10000),
             text: input,
-            time: new Date(),
+            time: Date.now(),
         });
         setInput("")
     };
@@ -28,15 +28,15 @@ const TodoForm = ({ todos, setTodos }) => {
     return (
         <div className="todo_form_container">
             <Form form={form} layout="vertical">
-                <Input.Group compact>
+                <Input.Group compact className="todo_form_input_button">
                     <Input
-                        style={{ width: "50%" }}
                         placeholder="Add Todo"
                         allowClear
                         value={input}
                         onChange={handleChange}
+                        className="todo_form_input_button input"
                     />
-                    <Button type="primary" onClick={handleSubmit}>
+                    <Button disabled={!input} type="primary" onClick={handleSubmit} className="todo_form_input_button button">
                         Submit
                     </Button>
                 </Input.Group>
