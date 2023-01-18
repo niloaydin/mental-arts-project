@@ -17,7 +17,7 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
     const handleDelete = (id) => {
 
         const newTodoArray = [...todos].filter((todo) => todo.id !== id);
-        setTodos(newTodoArray);
+        setTodos(newTodoArray)
         message.success(`You've succesfully deleted the todo!`);
 
     };
