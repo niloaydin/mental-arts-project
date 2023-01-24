@@ -6,16 +6,13 @@ import { Droppable } from 'react-beautiful-dnd';
 
 const TodoList = ({ todos, setTodos, isEditing, setIsEditing, setCompletedTodos, completedTodos }) => {
 
-
     return (
         <div className="todo_list_container">
-
             <Row>
-
-                <Col span={8} offset={3}
+                <Col xs={{ span: 22, offset: 1 }} sm={{ span: 10, offset: 2 }} md={{ span: 8, offset: 3 }} lg={{ span: 8, offset: 3 }}
                     className="active_todo_board"
                 >
-                    <h1> TODO LIST</h1>
+                    <h1> ACTIVE</h1>
                     <Droppable droppableId="ActiveTodos">
                         {
                             (provided) => (
@@ -34,15 +31,8 @@ const TodoList = ({ todos, setTodos, isEditing, setIsEditing, setCompletedTodos,
                             )}
                     </Droppable>
                 </Col>
-
-
-
-
-
-
-                <Col span={8} offset={1} className="completed_todo_board">
-
-                    <h1>COMPLETED TODOS</h1>
+                <Col xs={{ span: 22, offset: 1 }} sm={{ span: 10, offset: 1 }} md={{ span: 8, offset: 1 }} lg={{ span: 8, offset: 1 }} className="completed_todo_board">
+                    <h1>COMPLETED</h1>
                     <Droppable droppableId="CompletedTodos">
                         {
                             (provided) => (
@@ -57,15 +47,8 @@ const TodoList = ({ todos, setTodos, isEditing, setIsEditing, setCompletedTodos,
                                 </div>
                             )}
                     </Droppable>
-
-
                 </Col>
-
-
-
             </Row>
-
-
         </div >
     );
 };

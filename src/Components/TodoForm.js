@@ -3,11 +3,12 @@ import { Input, Button, Form } from "antd";
 import "./Css/TodoForm.css";
 
 const TodoForm = ({ todos, setTodos }) => {
+
     const [input, setInput] = useState("");
     const [form] = Form.useForm();
 
     const addTodos = (todo) => {
-        if (!todo.text || /^\s*$/.test(todo.text)) return;
+        if (/^\s*$/.test(todo.text)) return;
         const newTodos = [todo, ...todos];
         setTodos(newTodos);
     };

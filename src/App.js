@@ -10,12 +10,9 @@ function App() {
   const [isEditing, setIsEditing] = useState(false)
   const [completedTodos, setCompletedTodos] = useState([])
 
-
   const handleOnDragEnd = (result) => {
     const { source, destination } = result
     if (!destination) return;
-
-    console.log("QQQQ", result)
 
 
     if (destination.droppableId === source.droppableId
@@ -28,14 +25,13 @@ function App() {
 
 
     if (source.droppableId === "ActiveTodos") {
+
       add = active[source.index]
-      console.log("-----", add)
       active.splice(source.index, 1);
 
-
     } else if (source.droppableId === "CompletedTodos") {
-      add = complete[source.index]
 
+      add = complete[source.index]
       complete.splice(source.index, 1);
 
     }
@@ -46,8 +42,6 @@ function App() {
       complete.splice(destination.index, 0, add);
     }
 
-
-
     setCompletedTodos(complete)
     setTodos(active)
   }
@@ -55,12 +49,9 @@ function App() {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <div className={!isEditing ? "App" : "App edited"}>
-
         <TodoForm todos={todos} setTodos={setTodos} />
 
-
         <TodoList todos={todos} setTodos={setTodos} completedTodos={completedTodos} setCompletedTodos={setCompletedTodos} isEditing={isEditing} setIsEditing={setIsEditing} />
-
       </div>
     </DragDropContext>
   );
