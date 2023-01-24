@@ -8,6 +8,7 @@ const TodoForm = ({ todos, setTodos }) => {
     const [form] = Form.useForm();
 
     const addTodos = (todo) => {
+        // if empty characters are written into input dont add them into the todos array
         if (/^\s*$/.test(todo.text)) return;
         const newTodos = [todo, ...todos];
         setTodos(newTodos);
@@ -18,11 +19,14 @@ const TodoForm = ({ todos, setTodos }) => {
     };
 
     const handleSubmit = () => {
+
         addTodos({
+            //Add a random id for each todo
             id: Math.floor(Math.random() * 10000),
             text: input,
             time: Date.now(),
         });
+        //set input to empty string so that when todo is submitted the input should be empty again
         setInput("")
     };
 

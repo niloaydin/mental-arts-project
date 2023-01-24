@@ -10,11 +10,13 @@ function App() {
   const [isEditing, setIsEditing] = useState(false)
   const [completedTodos, setCompletedTodos] = useState([])
 
+
+  //Implementation of the Drag feature
   const handleOnDragEnd = (result) => {
     const { source, destination } = result
     if (!destination) return;
 
-
+    //change the todo and completed todo array according to the list that you drag from and drop at
     if (destination.droppableId === source.droppableId
       &&
       destination?.index === source?.index) { return };
@@ -23,25 +25,26 @@ function App() {
     let active = todos;
     let complete = completedTodos;
 
-
+    //delete the todo from todos array that you are dragging
     if (source.droppableId === "ActiveTodos") {
 
       add = active[source.index]
       active.splice(source.index, 1);
-
+      //delete the todo from completedTodos array that you are dragging
     } else if (source.droppableId === "CompletedTodos") {
 
       add = complete[source.index]
       complete.splice(source.index, 1);
 
     }
-
+    //Add todo to the active todo list
     if (destination.droppableId === "ActiveTodos") {
       active.splice(destination.index, 0, add);
+    //Add todo to the completed todo list
     } else {
       complete.splice(destination.index, 0, add);
     }
-
+    //mutate states
     setCompletedTodos(complete)
     setTodos(active)
   }

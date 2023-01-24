@@ -12,14 +12,16 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
     });
 
     const handleDelete = (id) => {
+        //find the todo with their id and create a new array with todos whose id is not equal to passed it
         const newTodoArray = [...todos].filter((todo) => todo.id !== id);
         setTodos(newTodoArray)
         message.success(`You've succesfully deleted the todo!`);
     };
 
     const updateTodo = () => {
+        //go through every todo and if the edit id equals to todo id, change the text with the input
         const editedTodoList = [...todos].map((todo) => {
-            if (!input || /^\s*$/.test(input)) return todo;
+            if (/^\s*$/.test(input)) return todo;
 
             if (todo.id === edit.id) {
                 return (todo = { ...todo, text: input });
@@ -30,13 +32,14 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
         setTodos(editedTodoList);
 
     };
-
+    //watch the change of the input
     const handleChange = (event) => {
         setInput(event.target.value);
     };
 
     const handleEdit = () => {
         updateTodo();
+        //set edit id to null so that edit functions does not recur
         setEdit({
             id: null,
         });
@@ -45,16 +48,18 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
 
     };
     const triggerEdit = (todo) => {
-        console.log("AAA", todo.id)
+        //create a edit id with the clicked todo item's id
         setEdit({ id: todo.id })
         setIsEditing(true)
     }
+    //in order to close the modal, change the state of isEditing
     const handleCancel = () => {
         setIsEditing(false)
     };
 
-    return (
 
+    return (
+        //if edit button in the todo item is clicked and todo's item equals to edit items show the modal
         isEditing && (todo.id === edit.id)
             ?
             <div key={todo?.id}

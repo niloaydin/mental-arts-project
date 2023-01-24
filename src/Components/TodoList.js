@@ -13,6 +13,7 @@ const TodoList = ({ todos, setTodos, isEditing, setIsEditing, setCompletedTodos,
                     className="active_todo_board"
                 >
                     <h1> ACTIVE</h1>
+                    {/* set droppable places */}
                     <Droppable droppableId="ActiveTodos">
                         {
                             (provided) => (
