@@ -11,8 +11,6 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
         id: null,
     });
 
-
-
     const handleDelete = (id) => {
         //find the todo with their id and create a new array with todos whose id is not equal to passed it
         const newTodoArray = [...todos].filter((todo) => todo.id !== id);
@@ -38,12 +36,14 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
         setTodos(editedTodoList);
 
     };
+
     //watch the change of the input
     const handleChange = (event) => {
         setInput(event.target.value);
     };
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.preventDefault()
         updateTodo();
         //set edit id to null so that edit functions does not recur
         setEdit({
@@ -77,6 +77,13 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
                             defaultValue={todo.text}
                             onChange={handleChange}
                             className="edit_form input"
+                            onKeyPress={(e) => {
+                                if (e.key === "Enter") {
+                                    handleEdit(e)
+                                }
+                            }}
+
+
                         />
 
                         <Button type="primary" disabled={!input} style={{ width: "20%" }} onClick={handleEdit} className="edit_form button">
@@ -101,7 +108,8 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
                                                 description="Are you sure to delete this todo?"
                                                 onConfirm={() => handleDelete(todo?.id)}
                                                 okText="Yes"
-                                                cancelText="No">
+                                                cancelText="No"
+                                            >
                                                 <DeleteOutlined
                                                     style={{ fontSize: "20px", color: "rgba(210, 73, 35, 1)" }}
                                                     className="todo_icons delete"
