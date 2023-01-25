@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Input, Modal, message, Popconfirm } from "antd";
+import { Button, Card, Input, Modal, message, Popconfirm, notification } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import "./Css/TodoItem.css";
 import { Draggable } from 'react-beautiful-dnd';
@@ -11,11 +11,17 @@ const TodoItem = ({ todo, todos, setTodos, isEditing, setIsEditing, index }) => 
         id: null,
     });
 
+
+
     const handleDelete = (id) => {
         //find the todo with their id and create a new array with todos whose id is not equal to passed it
         const newTodoArray = [...todos].filter((todo) => todo.id !== id);
         setTodos(newTodoArray)
-        message.success(`You've succesfully deleted the todo!`);
+        notification.success({
+            message: (`You've sucessfully deleted the todo!`),
+            placement: 'topRight',
+            duration: 1.5
+        });
     };
 
     const updateTodo = () => {

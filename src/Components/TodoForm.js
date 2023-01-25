@@ -11,14 +11,15 @@ const TodoForm = ({ todos, setTodos }) => {
         // if empty characters are written into input dont add them into the todos array
         if (/^\s*$/.test(todo.text)) return;
         const newTodos = [todo, ...todos];
-        setTodos(newTodos);
+        setTodos(newTodos.sort((a, b) => a.time - b.time));
     };
 
     const handleChange = (event) => {
         setInput(event.target.value);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
         addTodos({
             //Add a random id for each todo
@@ -32,7 +33,7 @@ const TodoForm = ({ todos, setTodos }) => {
 
     return (
         <div className="todo_form_container">
-            <Form form={form} layout="vertical">
+            <Form form={form} layout="vertical" >
                 <Input.Group compact className="todo_form_input_button">
                     <Input
                         placeholder="Add Todo"
@@ -40,8 +41,16 @@ const TodoForm = ({ todos, setTodos }) => {
                         value={input}
                         onChange={handleChange}
                         className="todo_form_input_button input"
+                        onKeyPress={(e) => {
+                            if (e.key === "Enter") {
+                                handleSubmit(e)
+                            }
+                        }}
+
                     />
+
                     <Button disabled={!input} type="primary" onClick={handleSubmit} className="todo_form_input_button button">
+
                         Submit
                     </Button>
                 </Input.Group>
