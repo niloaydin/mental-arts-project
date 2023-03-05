@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import './App.css'
-// import 'antd/dist/reset.css';
 import TodoForm from './Components/TodoForm'
 import TodoList from './Components/TodoList'
 
