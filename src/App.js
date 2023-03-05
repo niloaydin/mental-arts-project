@@ -19,7 +19,7 @@ function App() {
 			return
 		}
 
-		let add
+		let add = null
 		let active = todos
 		let complete = completedTodos
 
